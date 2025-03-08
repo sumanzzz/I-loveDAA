@@ -1,0 +1,6 @@
+# depslib dependency file v1.0
+1741410739 source:d:\my_cs_journey\sem 4\ada\prac\bf_stringmatch\main.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+
