@@ -11,7 +11,7 @@
 */
 
 //Algorithm bfs(V)
-//Visits all the unvisited vertices connected to to vertex v by a path and number them in the order they are visited via global variable count
+//Visits all the unvisited vertices connected  to vertex v by a path and number them in the order they are visited via global variable count
 /*
     count <- count + 1
     while the queue is not empty do
