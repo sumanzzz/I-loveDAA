@@ -18,7 +18,7 @@
         j = r + 1
         repeat
             repeat i = i + 1 until A[i] >= p
-            repeat j = j + 1 until A[j] >= p
+            repeat j = j + 1 until A[j] <= p
             Swap(A[i],A[j])
         until i>=j
         SSwap(A[i],A[j])
@@ -64,7 +64,7 @@ int partition(int arr[],int l,int r){
         do{
             j--;
         }
-        while(arr[j]>p && j>=l);
+        while(arr[j]>=p && j>=l);
         if(i<j){
            swap(&arr[i],&arr[j]);
         }
