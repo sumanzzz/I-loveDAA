@@ -29,58 +29,62 @@ For adjacency List represntation : O(|v| + |E|)
 
 #include <stdio.h>
 #include <stdlib.h>
+int Graph[20][20],visited[10],i,j,n,start;
+void matread(){
 
-#define MAX 20
-
-int graph[MAX][MAX]; // Adjacency matrix
-int visited[MAX];     // Visited array
-int n;               // Number of vertices
-
-void dfs(int v) {
-    visited[v] = 1;
-    printf("%d ", v);
-
-    for (int i = 1; i < n+1; i++) {
-        if (graph[v][i] == 1 && visited[i] == 0) {
-            dfs(i);
-        }
-    }
-}
-
-void DFS(void) {
-    for (int i = 1; i < n+1; i++) {
-        visited[i] = 0;  // Initialize all nodes as unvisited
-    }
-
-    printf("DFS Traversal:\n");
-    for (int i = 1; i < n+1; i++) {
-        if (visited[i] == 0) {
-            printf("\nStarting new DFS from node %d\n", i);
-            dfs(i);
-        }
-    }
-}
-
-int main() {
-    int start;
-
-    printf("Enter the number of vertices: ");
-    scanf("%d", &n);
-
+    printf("Enter the number of vertices:");
+    scanf("%d",&n);
     printf("Enter the adjacency matrix:\n");
-    for (int i = 1; i < n+1; i++) {
-        for (int j = 1; j < n+1; j++) {
-            scanf("%d", &graph[i][j]);
+    for(i=1;i<n+1;i++){
+        for(j=1;j<n+1;j++){
+            scanf("%d",&Graph[i][j]);
         }
     }
+}
+void matdisp(){
+    printf("Entered adjacency matrix is:\n");
+    for(i=1;i<n+1;i++){
+        for(j=1;j<n+1;j++){
+            printf("%d\t",Graph[i][j]);
+        }
+        printf("\n");
+    }
+}
+void DFS(int v){
+    visited[v]=1;
 
-    printf("Enter the starting vertex: ");
-    scanf("%d", &start);
+    printf("%d\t",v);
+    for(i=1;i<n+1;i++){
+        if(Graph[v][i]==1 && !visited[i]){
 
-    printf("DFS Traversal starting from vertex %d:\n", start);
-    dfs(start);
+            DFS(i);
+        }
+    }
+}
+int isConnected() {
+    for (int i = 1; i <= n; i++) {
+        if (!visited[i]) 
+            return 0;
+    }
+    return 1; 
+}
+int main()
+{
 
-    printf("\n");
+    matread();
+    matdisp();
+    printf("Enter the starting vertex:");
+    scanf("%d",&start);
+    printf("\nDFS traversal is:\n");
+
+    DFS(start);
+    if(isConnected()){
+        printf("\nThe graph is connected.");
+    }
+    else{
+        printf("\nThe graph is not connected!");
+    }
+
 
     return 0;
 }
