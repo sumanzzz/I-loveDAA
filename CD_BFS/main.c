@@ -27,6 +27,7 @@ Time Complexity: O(V+E)
 
 #include <stdio.h>
 #include <stdlib.h>
+
 #define MAX 10
 
 void readMat(int adj[MAX][MAX], int n) {
@@ -48,9 +49,8 @@ void displayMat(int adj[MAX][MAX], int n) {
     }
 }
 
-void bfs(int adj[MAX][MAX], int n, int start) {
+void bfs(int adj[MAX][MAX], int n, int start, int visited[MAX]) {
     int queue[MAX], front = 0, rear = 0;
-    int visited[MAX] = {0}; // Initialize all nodes as unvisited
 
     queue[rear] = start; // Enqueue start vertex
     visited[start] = 1;
@@ -71,12 +71,27 @@ void bfs(int adj[MAX][MAX], int n, int start) {
     printf("\n");
 }
 
+int isConnected(int n, int visited[MAX]) {
+    for (int i = 1; i < n+1; i++) {
+        if (!visited[i]) {
+            return 0; // Graph is not connected
+        }
+    }
+    return 1; // Graph is connected
+}
+
 int main() {
     int n, start;
     int adj[MAX][MAX];
+    int visited[MAX] = {0}; // Initialize all nodes as unvisited
 
     printf("Enter the number of vertices: ");
     scanf("%d", &n);
+
+    if (n <= 0 || n > MAX) {
+        printf("Invalid number of vertices. Please enter a value between 1 and %d.\n", MAX);
+        return 1;
+    }
 
     readMat(adj, n);
     displayMat(adj, n);
@@ -84,7 +99,18 @@ int main() {
     printf("Enter the starting vertex: ");
     scanf("%d", &start);
 
-    bfs(adj, n, start);
+    if (start < 1 || start > n) {
+        printf("Invalid starting vertex. Please enter a value between 1 and %d.\n", n);
+        return 1;
+    }
+
+    bfs(adj, n, start, visited);
+
+    if (isConnected(n, visited)) {
+        printf("The graph is connected.\n");
+    } else {
+        printf("The graph is not connected!\n");
+    }
 
     return 0;
 }
