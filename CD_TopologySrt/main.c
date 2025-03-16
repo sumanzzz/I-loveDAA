@@ -30,16 +30,28 @@ void TopologicalSort(int v) {
     int count = 0, queue[MAX], front = 0, rear = 0;
 
     // Initialize in-degree array
-    for (int i = 0; i < v; i++) inDegree[i] = 0;
+    for (int i = 0; i < v; i++){
+        inDegree[i] = 0;
+    }
 
     // Compute in-degrees of all vertices
-    for (int i = 0; i < v; i++)
-        for (int j = 0; j < v; j++)
-            if (Graph[i][j] == 1) inDegree[j]++;
+    for (int i = 0; i < v; i++){
+        for (int j = 0; j < v; j++){
+            if (Graph[i][j] == 1){
+                inDegree[j]++;
+            }
+        }
+    }
+
+
 
     // Enqueue vertices with zero in-degree
-    for (int i = 0; i < v; i++)
-        if (inDegree[i] == 0) queue[rear++] = i;
+    for (int i = 0; i < v; i++){
+        if (inDegree[i] == 0){
+            queue[rear++] = i;
+        }
+
+    }
 
     // Process vertices in queue
     while (front < rear) {
@@ -47,16 +59,24 @@ void TopologicalSort(int v) {
         printf("%d\t", current);
         count++;
 
-        for (int i = 0; i < v; i++)
-            if (Graph[current][i] == 1 && --inDegree[i] == 0)
-                queue[rear++] = i;
+        for (int i = 0; i < v; i++){
+            if (Graph[current][i] == 1 && --inDegree[i] == 0){
+                 queue[rear++] = i;
+            }
+
+        }
+
     }
 
     // Check for cycles
-    if (count != v)
+    if (count != v){
         printf("\nGraph has a Cycle! Topological Sort not possible.");
-    else
+    }
+
+    else{
         printf("\nTopological sort complete.");
+    }
+
 }
 
 int main() {
