@@ -22,7 +22,9 @@
     remove the front vertex from the queue
 
 
-Time Complexity: O(V+E)
+Time Complexity:
+For adjacency matrix representation : O(|V|^2)
+For adjacency List represntation : O(|v| + |E|)
 */
 
 #include <stdio.h>
