@@ -6,7 +6,7 @@ Algorithm HeapBottomUp(H[1...n])
 //Output: A heap H[1..n]
 
     for i <- [n/2] down to 1 do
-        K  <- I; V <- h[K]
+        k  <- i; v <- h[k]
         heap <- false
         while not heap and 2 * k <= n do
             j <- 2*k
