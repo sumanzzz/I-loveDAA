@@ -1,3 +1,22 @@
+/*
+ALGORITHM Warshall(A[1..n, 1..n])
+
+// Implements Warshall's algorithm for computing the transitive closure
+// Input: The adjacency matrix A of a digraph with n vertices
+// Output: The transitive closure of the digraph
+
+R^(0) ← A
+
+for k ← 1 to n do
+    for i ← 1 to n do
+        for j ← 1 to n do
+            R^(k)[i, j] ← R^(k-1)[i, j] or (R^(k-1)[i, k] and R^(k-1)[k, j])
+
+return R^(n)
+
+Time complexity: θ(n^3)
+*/
+
 #include <stdio.h>
 
 void warshall(int A[10][10], int nv, int R[10][10])
