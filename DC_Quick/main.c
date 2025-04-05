@@ -21,7 +21,7 @@
             repeat j = j + 1 until A[j] <= p
             Swap(A[i],A[j])
         until i>=j
-        SSwap(A[i],A[j])
+        Swap(A[i],A[j])
         Swap(A[l],A[j])
         return j
 
