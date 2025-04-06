@@ -5,7 +5,7 @@
 /*
     if n > 1
         copy A[0...[n/2] -1] to B[0...[n/2] -1]
-        copy A[0...[n/2] -1] to C[0...[n/2] -1]
+        copy A[[n/2]...n-1] to C[0...[n/2] -1]
         MergeSort(B[0...[n/2] -1])
         MergeSort(C[0...[n/2] -1])
         Merge(B , C , A)
