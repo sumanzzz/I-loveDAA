@@ -14,7 +14,7 @@ Algorithm HeapBottomUp(H[1...n])
                 if H[j] < H[j+1]  j <- j+1
             if v >= H[j]
                 heap <- true
-            else H[k] <- B[j]  k <- j
+            else H[k] <- H[j]  k <- j
         H[k] <- v
 
 
