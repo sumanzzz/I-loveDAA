@@ -5,7 +5,7 @@
 /*
     for i <- 0 to n-2 do
         min <- i
-        for j <-0 to n-2 do
+        for j <-i+1 to n-1 do
             if A[j] < A[min]
                 min <- j
 
