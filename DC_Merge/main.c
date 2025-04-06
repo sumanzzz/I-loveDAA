@@ -99,5 +99,5 @@ int main()
     MergeSort(A,0,n-1);
     Display(A,n);
     return 0;
-    return 0;
+    
 }
